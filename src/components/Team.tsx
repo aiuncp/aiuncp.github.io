@@ -26,7 +26,7 @@ export default function Team() {
       role: "Faculty Advisor",
       organization: "AI@UNCP & HACKUNCP 2025",
       linkedin: "https://www.linkedin.com/in/mark-hunt-m-b-a-3291b317/",
-      photo: "/team/mark_hunt.png",
+      photo: "./team/mark_hunt.png",
     },
     officers: [
       {
@@ -34,28 +34,28 @@ export default function Team() {
         role: "President",
         organization: "AI@UNCP & Lead Organizer, HACKUNCP 2025",
         linkedin: "https://www.linkedin.com/in/najmulhasan-cs-math/",
-        photo: "/team/najmul-hasan.jpg",
+        photo: "./team/najmul-hasan.jpg",
       },
       {
         name: "Andrew Cart",
         role: "Vice President",
         organization: "AI@UNCP & Organizer, HACKUNCP 2025",
         linkedin: "https://www.linkedin.com/in/andrew-cart-23b816246",
-        photo: "/team/andrew_cart.png",
+        photo: "./team/andrew_cart.png",
       },
       {
         name: "Muhammad Fardin Islam",
         role: "Secretary",
         organization: "AI@UNCP & Organizer, HACKUNCP 2025",
         linkedin: "https://www.linkedin.com/in/muhammad-fardin-islam",
-        photo: "/team/fardin_islam.png",
+        photo: "./team/fardin_islam.png",
       },
       {
         name: "Aren M Hall",
         role: "Treasurer",
         organization: "AI@UNCP & Organizer, HACKUNCP 2025",
         linkedin: "",
-        photo: "/team/aren_hall.png",
+        photo: "./team/aren_hall.png",
       },
     ],
   };

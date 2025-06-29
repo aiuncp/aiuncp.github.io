@@ -6,7 +6,7 @@ export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -136,8 +136,8 @@ export default function Hero() {
         <div className="group flex items-center gap-4 bg-slate-900/60 backdrop-blur-xl border border-slate-700/50 px-6 py-4 rounded-2xl shadow-2xl hover:bg-slate-800/70 transition-all duration-500 hover:scale-105">
           {/* Animated AI Icon */}
           <div className="relative">
-            <div className="w-28 h-12 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
-              <span className="text-white text-lg font-black tracking-wider">AI@UNCP</span>
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
+              <span className="text-white text-lg font-black tracking-wider">AI</span>
               {/* Pulse ring */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl animate-ping opacity-20 group-hover:opacity-40" />
             </div>
@@ -145,6 +145,10 @@ export default function Hero() {
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50" />
           </div>
           
+          <div className="flex flex-col">
+            <span className="text-white font-bold text-xl tracking-wide">@UNCP</span>
+            <span className="text-blue-300 text-sm font-medium">Research Lab</span>
+          </div>
           
           {/* Hover effect decoration */}
           <div className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -165,7 +169,7 @@ export default function Hero() {
             {/* Logo container */}
             <div className="relative w-full h-full bg-white/95 backdrop-blur-sm rounded-full p-4 shadow-2xl border-4 border-white/20 hover:scale-105 transition-transform duration-500">
               <img 
-                src="/logos/Artificial Intelligence @ UNCP  Logo.png" 
+                src="./logos/Artificial Intelligence @ UNCP  Logo.png" 
                 alt="AI@UNCP Organization Logo"
                 className="w-full h-full object-contain rounded-full"
                 onError={(e) => {
