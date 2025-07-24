@@ -23,7 +23,7 @@ export default function Team() {
   const leadership = {
     advisor: {
       name: "Mark Hunt",
-      role: "Faculty Advisor",
+      role: "Advisor",
       organization: "AI@UNCP & HACKUNCP 2025",
       linkedin: "https://www.linkedin.com/in/mark-hunt-m-b-a-3291b317/",
       photo: "./team/mark_hunt.png",
@@ -66,10 +66,10 @@ export default function Team() {
       semester: "Spring",
       year: 2025,
       members: [
-        "Adita Haque Raisa",
-        "Allyson Taylor",
         "Andrew Cart",
         "Aren Hall",
+        "Adita Haque Raisa",
+        "Allyson Taylor",
         "Brandon Swallow",
         "Bryan Ndum",
         "Daniel Karmanov",
@@ -193,8 +193,8 @@ export default function Team() {
       <div
         className={`group relative overflow-hidden rounded-3xl transition-all duration-500 transform hover:scale-105 hover:-rotate-1 ${
           isAdvisor
-            ? "bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800"
-            : "bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800"
+            ? "bg-gradient-to-br from-[#3E8B94] via-[#2e6c78] to-slate-800 ring-2 ring-[#3E8B94]/30"
+            : "bg-gradient-to-br from-[#3E8B94]/80 via-teal-700 to-slate-800"
         } shadow-2xl hover:shadow-3xl`}
       >
         {/* Background pattern */}
@@ -206,7 +206,9 @@ export default function Team() {
         <div className="relative z-10 p-8">
           {/* Photo */}
           <div className="mb-6 relative">
-            <div className="w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/30 shadow-2xl group-hover:border-white/50 transition-all duration-500">
+            <div className={`w-32 h-32 mx-auto rounded-full overflow-hidden ${
+              isAdvisor ? 'border-4 border-[#B8232F]/50' : 'border-4 border-white/30'
+            } shadow-2xl group-hover:border-white/50 transition-all duration-500`}>
               {member.photo ? (
                 <img
                   src={member.photo}
@@ -234,13 +236,17 @@ export default function Team() {
             </div>
 
             {/* Status indicator */}
-            <div className="absolute top-2 right-2 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
+            <div className={`absolute top-2 right-2 w-4 h-4 ${
+              isAdvisor ? 'bg-[#B8232F]' : 'bg-[#3E8B94]'
+            } rounded-full border-2 border-white animate-pulse`}></div>
           </div>
 
           {/* Info */}
           <div className="text-center text-white">
             <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-            <p className="text-lg font-semibold text-white/90 mb-1">
+            <p className={`text-lg font-semibold mb-1 ${
+              isAdvisor ? 'text-[#B8232F]/90' : 'text-white/90'
+            }`}>
               {member.role}
             </p>
             <p className="text-sm text-white/70 mb-4 leading-relaxed">
@@ -274,7 +280,7 @@ export default function Team() {
               {member.email && (
                 <a
                   href={`mailto:${member.email}`}
-                  className="w-12 h-12 bg-white/20 hover:bg-red-500 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                  className="w-12 h-12 bg-white/20 hover:bg-[#B8232F] rounded-xl flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                   title="Send Email"
                 >
                   <svg
@@ -316,11 +322,11 @@ export default function Team() {
         {/* Modal */}
         <div className="relative bg-white rounded-3xl shadow-2xl max-w-5xl max-h-[85vh] overflow-hidden m-4">
           {/* Header */}
-          <div className="p-8 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white">
+          <div className="p-8 bg-gradient-to-r from-[#3E8B94] via-[#B8232F] to-slate-600 text-white">
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-3xl font-bold mb-2">AI@UNCP Members</h2>
-                <p className="text-blue-100">
+                <p className="text-white/90">
                   Our growing community of AI enthusiasts
                 </p>
               </div>
@@ -354,7 +360,7 @@ export default function Team() {
                     <div
                       className={`w-4 h-4 rounded-full ${
                         index === 0
-                          ? "bg-green-500 animate-pulse"
+                          ? "bg-[#3E8B94] animate-pulse"
                           : "bg-gray-400"
                       }`}
                     ></div>
@@ -362,7 +368,7 @@ export default function Team() {
                       {semester.semester} {semester.year}
                     </h3>
                     {index === 0 && (
-                      <span className="px-3 py-1 bg-green-100 text-green-800 text-sm font-medium rounded-full">
+                      <span className="px-3 py-1 bg-[#3E8B94]/10 text-[#3E8B94] text-sm font-medium rounded-full border border-[#3E8B94]/20">
                         Current
                       </span>
                     )}
@@ -375,10 +381,10 @@ export default function Team() {
                     {semester.members.map((member, memberIndex) => (
                       <div
                         key={memberIndex}
-                        className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 cursor-pointer border border-gray-100 hover:border-blue-200 hover:shadow-md"
+                        className="group flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-all duration-300 cursor-pointer border border-gray-100 hover:border-[#3E8B94]/20 hover:shadow-md"
                       >
                         <div className="flex-shrink-0">
-                          <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-xl flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-12 h-12 bg-gradient-to-r from-[#3E8B94] to-[#B8232F] rounded-xl flex items-center justify-center text-white font-bold text-sm">
                             {member
                               .split(" ")
                               .map((n) => n[0])
@@ -386,12 +392,12 @@ export default function Team() {
                           </div>
                         </div>
                         <div className="flex-grow">
-                          <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                          <div className="font-semibold text-gray-900 group-hover:text-[#3E8B94] transition-colors">
                             {member}
                           </div>
                           <div className="text-sm text-gray-500">Member</div>
                         </div>
-                        <div className="text-gray-400 group-hover:text-blue-400 transition-colors">
+                        <div className="text-gray-400 group-hover:text-[#3E8B94] transition-colors">
                           <span className="text-lg">{memberIndex + 1}</span>
                         </div>
                       </div>
@@ -410,13 +416,13 @@ export default function Team() {
     <>
       <section
         id="team-section"
-        className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 relative overflow-hidden"
+        className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-black relative overflow-hidden"
       >
         {/* Background effects */}
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-32 right-32 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-indigo-500/10 rounded-full blur-2xl animate-pulse delay-2000"></div>
+          <div className="absolute top-20 left-20 w-64 h-64 bg-[#3E8B94]/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-32 right-32 w-96 h-96 bg-[#B8232F]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-slate-500/10 rounded-full blur-2xl animate-pulse delay-2000"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -431,7 +437,7 @@ export default function Team() {
             </div>
 
             <h2 className="text-4xl md:text-6xl font-black text-white mb-6">
-              <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3E8B94] via-white to-[#B8232F] bg-clip-text text-transparent">
                 Meet Our Team
               </span>
             </h2>
@@ -467,7 +473,7 @@ export default function Team() {
           <div className="text-center">
             <button
               onClick={() => setShowMembersModal(true)}
-              className="group relative bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-cyan-500/25"
+              className="group relative bg-gradient-to-r from-[#3E8B94] to-[#B8232F] hover:from-[#2e6c78] hover:to-[#a01e29] text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-[#3E8B94]/25"
             >
               <span className="relative z-10 flex items-center gap-4">
                 <span>View All Members</span>
@@ -487,7 +493,7 @@ export default function Team() {
                   </svg>
                 </div>
               </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#3E8B94]/80 to-[#B8232F]/80 rounded-2xl blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
             </button>
 
             <p className="text-gray-400 text-sm mt-4">

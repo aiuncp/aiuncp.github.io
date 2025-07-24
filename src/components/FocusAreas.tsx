@@ -1,244 +1,364 @@
-"use client";
-import { useState } from "react";
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Code, Brain, Monitor, MessageCircle, Shield, Lock, Zap, Smartphone, Settings, ArrowRight, Sparkles } from 'lucide-react';
 
 export default function FocusAreas() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: (e.clientX / window.innerWidth - 0.5) * 20,
+        y: (e.clientY / window.innerHeight - 0.5) * 20,
+      });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   const areas = [
     {
       title: "Machine Learning",
-      description:
-        "Training algorithms to recognize patterns, make predictions, and learn from data. From neural networks to deep learning architectures.",
+      description: "Training algorithms to recognize patterns, make predictions, and learn from data. From neural networks to deep learning architectures.",
       tech: ["Python", "TensorFlow", "PyTorch", "Scikit-learn"],
-      color: "from-blue-500 to-cyan-500",
-      bgColor: "bg-gradient-to-br from-blue-50 to-cyan-50",
-      accent: "border-blue-200",
-      textColor: "text-blue-700",
+      icon: <Brain className="w-8 h-8" />,
+      gradient: "from-[#3E8B94] to-cyan-600",
+      bgGradient: "from-[#3E8B94]/10 to-cyan-500/10",
+      glowColor: "#3E8B94",
     },
     {
       title: "Large Language Models",
-      description:
-        "Building and fine-tuning powerful language models that can understand, generate, and reason with human language at scale.",
+      description: "Building and fine-tuning powerful language models that can understand, generate, and reason with human language at scale.",
       tech: ["GPT", "BERT", "Transformers", "LLaMA", "Fine-tuning"],
-      color: "from-indigo-500 to-purple-500",
-      bgColor: "bg-gradient-to-br from-indigo-50 to-purple-50",
-      accent: "border-indigo-200",
-      textColor: "text-indigo-700",
+      icon: <MessageCircle className="w-8 h-8" />,
+      gradient: "from-[#B8232F] to-red-600",
+      bgGradient: "from-[#B8232F]/10 to-red-500/10",
+      glowColor: "#B8232F",
     },
     {
       title: "Computer Vision",
-      description:
-        "Teaching machines to see and interpret visual information. Object detection, image classification, and visual understanding.",
+      description: "Teaching machines to see and interpret visual information. Object detection, image classification, and visual understanding.",
       tech: ["OpenCV", "YOLO", "CNNs", "Image Processing"],
-      color: "from-purple-500 to-pink-500",
-      bgColor: "bg-gradient-to-br from-purple-50 to-pink-50",
-      accent: "border-purple-200",
-      textColor: "text-purple-700",
+      icon: <Monitor className="w-8 h-8" />,
+      gradient: "from-[#3E8B94] to-teal-600",
+      bgGradient: "from-[#3E8B94]/10 to-teal-500/10",
+      glowColor: "#3E8B94",
     },
     {
       title: "Natural Language Processing",
-      description:
-        "Traditional NLP techniques for text analysis, sentiment detection, named entity recognition, and language understanding.",
+      description: "Traditional NLP techniques for text analysis, sentiment detection, named entity recognition, and language understanding.",
       tech: ["spaCy", "NLTK", "Text Mining", "Sentiment Analysis"],
-      color: "from-green-500 to-emerald-500",
-      bgColor: "bg-gradient-to-br from-green-50 to-emerald-50",
-      accent: "border-green-200",
-      textColor: "text-green-700",
+      icon: <Code className="w-8 h-8" />,
+      gradient: "from-slate-600 to-gray-700",
+      bgGradient: "from-slate-500/10 to-gray-600/10",
+      glowColor: "#64748b",
     },
     {
       title: "Cybersecurity",
-      description:
-        "Protecting systems, networks, and data from digital attacks. AI-powered threat detection, vulnerability assessment, and security analytics.",
-      tech: [
-        "Penetration Testing",
-        "Threat Detection",
-        "Network Security",
-        "Malware Analysis",
-      ],
-      color: "from-red-500 to-rose-500",
-      bgColor: "bg-gradient-to-br from-red-50 to-rose-50",
-      accent: "border-red-200",
-      textColor: "text-red-700",
+      description: "Protecting systems, networks, and data from digital attacks. AI-powered threat detection, vulnerability assessment, and security analytics.",
+      tech: ["Penetration Testing", "Threat Detection", "Network Security", "Malware Analysis"],
+      icon: <Shield className="w-8 h-8" />,
+      gradient: "from-[#B8232F] to-rose-600",
+      bgGradient: "from-[#B8232F]/10 to-rose-500/10",
+      glowColor: "#B8232F",
     },
     {
       title: "Cryptography",
-      description:
-        "Securing information through mathematical algorithms and protocols. From classical encryption to post-quantum cryptographic systems.",
-      tech: [
-        "RSA",
-        "AES",
-        "Blockchain",
-        "Hash Functions",
-        "Digital Signatures",
-      ],
-      color: "from-slate-500 to-gray-600",
-      bgColor: "bg-gradient-to-br from-slate-50 to-gray-50",
-      accent: "border-slate-200",
-      textColor: "text-slate-700",
+      description: "Securing information through mathematical algorithms and protocols. From classical encryption to post-quantum cryptographic systems.",
+      tech: ["RSA", "AES", "Blockchain", "Hash Functions", "Digital Signatures"],
+      icon: <Lock className="w-8 h-8" />,
+      gradient: "from-slate-700 to-gray-800",
+      bgGradient: "from-slate-600/10 to-gray-700/10",
+      glowColor: "#475569",
     },
     {
       title: "Quantum Computing",
-      description:
-        "Exploring quantum algorithms and their applications to solve complex computational problems exponentially faster than classical computers.",
+      description: "Exploring quantum algorithms and their applications to solve complex computational problems exponentially faster than classical computers.",
       tech: ["Qiskit", "Quantum Algorithms", "Quantum Gates", "NISQ"],
-      color: "from-violet-500 to-purple-600",
-      bgColor: "bg-gradient-to-br from-violet-50 to-purple-50",
-      accent: "border-violet-200",
-      textColor: "text-violet-700",
+      icon: <Zap className="w-8 h-8" />,
+      gradient: "from-[#3E8B94] to-cyan-700",
+      bgGradient: "from-[#3E8B94]/10 to-cyan-600/10",
+      glowColor: "#3E8B94",
     },
     {
       title: "AI Applications",
-      description:
-        "Building real-world solutions that make a difference. Bridging the gap between theoretical knowledge and practical implementation.",
+      description: "Building real-world solutions that make a difference. Bridging the gap between theoretical knowledge and practical implementation.",
       tech: ["Web APIs", "Mobile Apps", "Cloud Computing", "Edge AI"],
-      color: "from-orange-500 to-red-500",
-      bgColor: "bg-gradient-to-br from-orange-50 to-red-50",
-      accent: "border-orange-200",
-      textColor: "text-orange-700",
+      icon: <Smartphone className="w-8 h-8" />,
+      gradient: "from-[#B8232F] to-orange-600",
+      bgGradient: "from-[#B8232F]/10 to-orange-500/10",
+      glowColor: "#B8232F",
     },
     {
       title: "Software Engineering",
-      description:
-        "Designing, developing, and maintaining robust software systems. From full-stack development to DevOps and scalable architectures.",
+      description: "Designing, developing, and maintaining robust software systems. From full-stack development to DevOps and scalable architectures.",
       tech: ["React", "Node.js", "Docker", "Git", "Agile", "CI/CD"],
-      color: "from-teal-500 to-cyan-600",
-      bgColor: "bg-gradient-to-br from-teal-50 to-cyan-50",
-      accent: "border-teal-200",
-      textColor: "text-teal-700",
+      icon: <Settings className="w-8 h-8" />,
+      gradient: "from-[#3E8B94] to-teal-700",
+      bgGradient: "from-[#3E8B94]/10 to-teal-600/10",
+      glowColor: "#3E8B94",
     },
   ];
 
   return (
-    <section
-      id="research-section"
-      className="py-20 bg-gradient-to-br from-slate-50 via-gray-50 to-blue-50 relative overflow-hidden"
-    >
-      {/* Background decorative elements */}
+    <section className="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-black overflow-hidden">
+      {/* Dynamic AI-themed background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-32 h-32 bg-blue-200/20 rounded-full blur-2xl"></div>
-        <div className="absolute bottom-32 right-32 w-48 h-48 bg-purple-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 right-1/4 w-24 h-24 bg-green-200/20 rounded-full blur-xl"></div>
+        {/* Interactive floating orbs */}
+        <div
+          className="absolute top-20 left-20 w-96 h-96 bg-[#3E8B94]/10 rounded-full blur-3xl animate-pulse"
+          style={{ 
+            transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
+            animationDuration: '4s'
+          }}
+        />
+        <div
+          className="absolute bottom-32 right-32 w-80 h-80 bg-[#B8232F]/10 rounded-full blur-3xl animate-pulse"
+          style={{ 
+            transform: `translate(${-mousePosition.x * 0.3}px, ${-mousePosition.y * 0.3}px)`,
+            animationDuration: '6s',
+            animationDelay: '2s'
+          }}
+        />
+        <div
+          className="absolute top-1/2 right-1/4 w-64 h-64 bg-gray-400/5 rounded-full blur-2xl animate-pulse"
+          style={{ 
+            transform: `translate(${mousePosition.x * 0.2}px, ${mousePosition.y * 0.2}px)`,
+            animationDuration: '5s',
+            animationDelay: '1s'
+          }}
+        />
+
+        {/* Neural network particles */}
+        {[...Array(30)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              transform: `translate(${mousePosition.x * (i % 3) * 0.1}px, ${mousePosition.y * (i % 3) * 0.1}px)`,
+            }}
+          >
+            <div 
+              className={`w-1 h-1 rounded-full animate-ping ${
+                i % 3 === 0 ? 'bg-[#3E8B94]' :
+                i % 3 === 1 ? 'bg-[#B8232F]' :
+                'bg-gray-400'
+              }`}
+              style={{ 
+                animationDelay: `${i * 0.3}s`,
+                animationDuration: '3s'
+              }}
+            />
+          </div>
+        ))}
+
+        {/* Connection lines */}
+        <div className="absolute top-32 left-32 w-24 h-0.5 bg-gradient-to-r from-[#3E8B94]/40 to-transparent rotate-45 animate-pulse"></div>
+        <div className="absolute bottom-40 right-40 w-20 h-0.5 bg-gradient-to-r from-[#B8232F]/40 to-transparent -rotate-12 animate-pulse delay-700"></div>
+        <div className="absolute top-2/3 left-1/3 w-16 h-0.5 bg-gradient-to-r from-gray-400/40 to-transparent rotate-[67deg] animate-pulse delay-1000"></div>
+
+        {/* Holographic grid */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="w-full h-full" style={{
+            backgroundImage: `
+              linear-gradient(rgba(62, 139, 148, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(184, 35, 47, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}></div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Section header */}
+        {/* Enhanced header section */}
         <div className="text-center mb-20">
-          <div className="inline-block mb-6">
-            <div className="px-6 py-3 bg-white/80 backdrop-blur-sm rounded-full border border-gray-200 shadow-sm">
-              <span className="text-sm font-medium text-gray-600 tracking-wider uppercase">
-                Our Expertise
-              </span>
+          {/* Animated badge */}
+          <div className="relative inline-block mb-8">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#3E8B94]/50 to-[#B8232F]/50 rounded-full blur-2xl animate-pulse"></div>
+            <div className="relative flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-full px-8 py-3 shadow-2xl">
+              <Brain className="h-5 w-5 text-[#3E8B94] animate-pulse" />
+              <span className="text-white font-semibold text-sm tracking-wide">OUR EXPERTISE</span>
+              <Sparkles className="h-5 w-5 text-[#B8232F] animate-spin" style={{ animationDuration: '3s' }} />
             </div>
           </div>
 
-          <h2 className="text-4xl md:text-6xl font-black text-gray-900 mb-6 leading-tight">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-green-600 bg-clip-text text-transparent">
-              Areas of Focus
-            </span>
-          </h2>
+          {/* Main title with effects */}
+          <div className="relative mb-8">
+            <div className="absolute inset-0 transform translate-x-2 translate-y-2 opacity-20">
+              <h2 className="text-4xl md:text-6xl font-black text-slate-800">
+                Areas of Focus
+              </h2>
+            </div>
+            <h2 className="relative text-4xl md:text-6xl font-black leading-tight">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3E8B94] via-white to-[#B8232F] animate-gradient-x">
+                Areas of Focus
+              </span>
+            </h2>
+            
+            {/* Decorative elements */}
+            <div className="absolute -top-4 -left-4 w-3 h-3 bg-[#3E8B94] rounded-full animate-ping opacity-60"></div>
+            <div className="absolute -bottom-4 -right-4 w-2 h-2 bg-[#B8232F] rounded-full animate-pulse delay-300"></div>
+          </div>
 
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Nine core domains where we push boundaries and create innovative
-            solutions
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Nine core domains where we push boundaries and create innovative solutions
           </p>
         </div>
 
-        {/* Focus area cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-20">
+        {/* Enhanced cards grid - 3 cards per row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {areas.map((area, index) => (
             <div
               key={index}
-              className={`group relative p-8 rounded-3xl ${area.bgColor} border-2 ${area.accent} hover:border-gray-300 transition-all duration-500 cursor-pointer transform hover:scale-[1.02] hover:-translate-y-2 shadow-lg hover:shadow-2xl`}
+              className="group relative h-full transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2"
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Animated background gradient */}
-              <div
-                className={`absolute inset-0 bg-gradient-to-r ${area.color} opacity-0 group-hover:opacity-5 rounded-3xl transition-opacity duration-500`}
+              {/* Card glow effect */}
+              <div 
+                className="absolute -inset-1 rounded-3xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ 
+                  background: `linear-gradient(45deg, ${area.glowColor}40, transparent, ${area.glowColor}20)` 
+                }}
               ></div>
 
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3
-                      className={`text-2xl font-bold ${area.textColor} mb-2 group-hover:scale-105 transition-transform duration-300`}
-                    >
-                      {area.title}
-                    </h3>
+              {/* Main card */}
+              <div className="relative h-full bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 hover:border-white/30 transition-all duration-500 overflow-hidden">
+                {/* Background gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${area.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl`}></div>
+                
+                {/* Animated particles for each card */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {[...Array(5)].map((_, i) => (
                     <div
-                      className={`w-16 h-1 bg-gradient-to-r ${area.color} rounded-full`}
-                    ></div>
-                  </div>
-
-                  {/* Animated corner element */}
-                  <div
-                    className={`w-12 h-12 bg-gradient-to-r ${area.color} rounded-2xl opacity-20 group-hover:opacity-40 group-hover:rotate-12 transition-all duration-300`}
-                  ></div>
+                      key={i}
+                      className="absolute w-1 h-1 rounded-full animate-ping"
+                      style={{
+                        left: `${20 + i * 15}%`,
+                        top: `${20 + i * 10}%`,
+                        backgroundColor: area.glowColor,
+                        animationDelay: `${i * 0.2}s`,
+                        animationDuration: '2s'
+                      }}
+                    />
+                  ))}
                 </div>
 
-                {/* Description */}
-                <p className="text-gray-700 mb-8 leading-relaxed text-lg">
-                  {area.description}
-                </p>
+                <div className="relative z-10 h-full flex flex-col">
+                  {/* Icon and title section */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex-1">
+                      {/* Icon container */}
+                      <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${area.gradient} mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 shadow-lg`}>
+                        <div className="text-white">
+                          {area.icon}
+                        </div>
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#3E8B94] group-hover:to-[#B8232F] transition-all duration-300">
+                        {area.title}
+                      </h3>
+                      
+                      {/* Animated underline */}
+                      <div className={`w-12 h-1 bg-gradient-to-r ${area.gradient} rounded-full group-hover:w-20 transition-all duration-500`}></div>
+                    </div>
 
-                {/* Tech stack */}
-                <div className="space-y-3">
-                  <div className="text-sm font-medium text-gray-500 uppercase tracking-wider">
-                    Technologies & Tools
+                    {/* Status indicator */}
+                    <div className="w-3 h-3 rounded-full bg-gradient-to-r from-green-400 to-emerald-500 animate-pulse group-hover:scale-150 transition-transform duration-300"></div>
                   </div>
-                  <div className="flex flex-wrap gap-3">
-                    {area.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className={`px-4 py-2 text-sm font-medium bg-white/80 backdrop-blur-sm rounded-xl border-2 transition-all duration-300 ${
-                          hoveredCard === index
-                            ? `border-transparent bg-gradient-to-r ${area.color} text-white shadow-lg transform scale-105`
-                            : "border-gray-200 text-gray-700 hover:border-gray-300"
-                        }`}
-                      >
-                        {tech}
+
+                  {/* Description */}
+                  <p className="text-gray-300 mb-8 leading-relaxed text-lg flex-1 group-hover:text-gray-200 transition-colors duration-300">
+                    {area.description}
+                  </p>
+
+                  {/* Technologies section */}
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2">
+                      <Code className="w-4 h-4 text-gray-400" />
+                      <span className="text-sm font-medium text-gray-400 uppercase tracking-wider">
+                        Technologies & Tools
                       </span>
-                    ))}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2">
+                      {area.tech.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className={`px-3 py-1.5 text-sm font-medium rounded-xl border transition-all duration-300 ${
+                            hoveredCard === index
+                              ? `border-transparent bg-gradient-to-r ${area.gradient} text-white shadow-lg transform scale-105`
+                              : 'border-white/20 text-gray-300 bg-white/5 hover:border-white/40 hover:bg-white/10'
+                          }`}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Floating accent elements */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-gradient-to-r ${area.color} rounded-full opacity-60 group-hover:animate-ping"></div>
-              <div className="absolute bottom-4 left-4 w-1 h-1 bg-gradient-to-r ${area.color} rounded-full opacity-40 group-hover:animate-pulse"></div>
+                {/* Corner accent */}
+                <div className={`absolute top-4 right-4 w-2 h-2 bg-gradient-to-r ${area.gradient} rounded-full opacity-60 group-hover:animate-ping`}></div>
+                <div className={`absolute bottom-4 left-4 w-1 h-1 bg-gradient-to-r ${area.gradient} rounded-full opacity-40 group-hover:animate-pulse`}></div>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* Bottom call to action */}
+        {/* Enhanced CTA section */}
         <div className="text-center">
-          <div className="inline-block p-8 bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 rounded-3xl transform hover:scale-105 transition-all duration-300 shadow-2xl">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-              <h3 className="text-2xl font-bold text-white">
-                Ready to Innovate?
-              </h3>
-            </div>
-            <p className="text-gray-300 mb-6 max-w-md mx-auto">
-              Join us in exploring the fascinating world of artificial
-              intelligence and machine learning.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://uncp.presence.io/organization/artificial-intelligence-at-uncp"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="bg-white text-gray-900 px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105">
-                  Get Involved
-                </button>
-              </a>
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-gradient-to-r from-[#3E8B94]/20 to-[#B8232F]/20 rounded-3xl blur-2xl"></div>
+            <div className="relative bg-white/5 backdrop-blur-xl rounded-3xl p-12 border border-white/20 transform hover:scale-105 transition-all duration-500 shadow-2xl overflow-hidden">
+              {/* Background animation */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#3E8B94]/10 via-transparent to-[#B8232F]/10 animate-pulse"></div>
+              
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <div className="w-3 h-3 bg-gradient-to-r from-[#3E8B94] to-[#B8232F] rounded-full animate-pulse"></div>
+                  <h3 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#3E8B94] to-[#B8232F]">
+                    Ready to Innovate?
+                  </h3>
+                  <div className="w-3 h-3 bg-gradient-to-r from-[#B8232F] to-[#3E8B94] rounded-full animate-pulse delay-300"></div>
+                </div>
+                
+                <p className="text-gray-300 mb-8 max-w-md mx-auto text-lg leading-relaxed">
+                  Join us in exploring the fascinating world of artificial intelligence and machine learning.
+                </p>
+                
+                <a
+                  href="https://uncp.presence.io/organization/artificial-intelligence-at-uncp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#3E8B94] to-[#B8232F] text-white font-semibold rounded-full hover:from-[#2e6c78] hover:to-[#a01e29] transition-all duration-500 transform hover:scale-110 shadow-lg text-lg"
+                >
+                  <Brain className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" />
+                  <span>Get Involved</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Custom animations */}
+      <style jsx>{`
+        @keyframes gradient-x {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+        .animate-gradient-x {
+          background-size: 200% 200%;
+          animation: gradient-x 3s ease infinite;
+        }
+      `}</style>
     </section>
   );
 }
