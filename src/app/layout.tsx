@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Global metadata for SEO and social sharing
+// Site metadata for SEO and social sharing
 export const metadata: Metadata = {
   title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
   description:
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "UNC Pembroke AI",
     "HackUNCP",
     "UNCP Hackathon",
-    "Student AI Research",
+    "Student AI Projects",
     "UNC Pembroke",
   ],
   authors: [{ name: "AI@UNCP" }],
@@ -33,14 +33,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
     description:
-      "Explore hands-on AI learning, projects, and research at the University of North Carolina at Pembroke.",
+      "Explore hands-on AI learning, student projects, and collaboration at the University of North Carolina at Pembroke.",
     url: "https://aiuncp.github.io",
     siteName: "AI@UNCP",
     images: [
       {
-        url: "/logos/Artificial%20Intelligence%20@%20UNCP%20%20Logo.png",
-        width: 1200,
-        height: 630,
+        url: "/favicon.png",
+        width: 512,
+        height: 512,
         alt: "AI@UNCP Logo",
       },
     ],
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
     description:
-      "Discover how students at UNCP explore and build real-world AI solutions through AI@UNCP.",
-    images: ["/logos/Artificial%20Intelligence%20@%20UNCP%20%20Logo.png"],
+      "Discover how students at UNCP explore and build with AI through real projects and collaboration.",
+    images: ["/favicon.png"],
     creator: "@uncp_ai",
   },
   metadataBase: new URL("https://aiuncp.github.io"),
   icons: {
-    icon: "/logos/Artificial%20Intelligence%20@%20UNCP%20%20Logo.png",
+    icon: "/favicon.png",
   },
 };
 
@@ -67,13 +67,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* Include favicon using encoded path with spaces */}
       <Head>
-        <link
-          rel="icon"
-          type="image/png"
-          href="/logos/Artificial%20Intelligence%20@%20UNCP%20%20Logo.png"
-        />
+        <link rel="icon" type="image/png" href="/favicon.png" />
       </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
