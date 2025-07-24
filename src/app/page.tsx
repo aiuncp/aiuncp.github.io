@@ -12,10 +12,10 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <Hero />
       <FocusAreas />
-      <HackUNCPOpening />    {/* Opens the HackUNCP story */}
-      <HackUNCP2026 />       {/* 2026 event details */}
-      <HackUNCP2025 />       {/* 2025 recap */}
-      <HackUNCPClosing />    {/* Closes the HackUNCP story */}
+      <HackUNCPOpening />    
+      <HackUNCP2026 />       
+      <HackUNCP2025 />       
+      <HackUNCPClosing />    
       <Team />
       <Footer />
     </div>

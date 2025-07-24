@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Google font setup
+// Load Google fonts
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// SEO metadata
+// Site metadata for SEO and favicon
 export const metadata: Metadata = {
   title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
   description:
@@ -32,17 +31,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
+        {/* Favicon */}
         <link
           rel="icon"
           type="image/png"
           href="https://aiuncp.github.io/favicon.png"
         />
+        {/* Google Search Console site verification */}
         <meta
           name="google-site-verification"
           content="Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU"
         />
-      </Head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
