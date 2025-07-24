@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Site metadata for SEO
+// SEO metadata
 export const metadata: Metadata = {
   title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
   description:
@@ -37,6 +37,10 @@ export default function RootLayout({
           rel="icon"
           type="image/png"
           href="https://aiuncp.github.io/favicon.png"
+        />
+        <meta
+          name="google-site-verification"
+          content="Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU"
         />
       </Head>
       <body
