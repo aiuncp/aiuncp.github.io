@@ -181,7 +181,7 @@ export default function FocusAreas() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#3E8B94]/50 to-[#B8232F]/50 rounded-full blur-2xl animate-pulse"></div>
             <div className="relative flex items-center gap-3 bg-white/5 backdrop-blur-xl border border-white/20 rounded-full px-8 py-3 shadow-2xl">
               <Brain className="h-5 w-5 text-[#3E8B94] animate-pulse" />
-              <span className="text-white font-semibold text-sm tracking-wide">OUR EXPERTISE</span>
+              <span className="text-white font-semibold text-sm tracking-wide">Our Focus</span>
               <Sparkles className="h-5 w-5 text-[#B8232F] animate-spin" style={{ animationDuration: '3s' }} />
             </div>
           </div>
