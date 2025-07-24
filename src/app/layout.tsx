@@ -38,12 +38,17 @@ export default function RootLayout({
           type="image/png"
           href="https://aiuncp.github.io/favicon.png"
         />
+<<<<<<< HEAD
         {/* Google Search Console site verification */}
         <meta
           name="google-site-verification"
           content="Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU"
         />
       </head>
+=======
+        <meta name="google-site-verification" content="Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU" />
+      </Head>
+>>>>>>> f1c0e6a53e1eaa56767f32d88a3a192710107a0b
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
