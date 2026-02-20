@@ -13,7 +13,7 @@ export default function HackUNCP() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  /* ── 2025 recap data ─────────────────────────────────── */
+  // 2025 recap data
 
   const stats2025 = [
     { number: '42', label: 'Participants', icon: <Users className="h-5 w-5" />, color: 'from-[#3E8B94] to-cyan-600' },
@@ -38,7 +38,7 @@ export default function HackUNCP() {
 
   const photoSlides = Array.from({ length: 25 }, (_, i) => `/hackuncp2025/hackuncp2025_${i + 2}.jpg`);
 
-  /* ── 2026 data ───────────────────────────────────────── */
+  // 2026 data
 
   const tracks2026 = [
     { name: 'AI for Education', icon: <Brain className="w-5 h-5" />, color: 'from-[#3E8B94] to-cyan-600' },
@@ -54,7 +54,7 @@ export default function HackUNCP() {
     { icon: <Users className="w-5 h-5" />, text: '100+ hackers expected' },
   ];
 
-  /* ── carousel logic ──────────────────────────────────── */
+  // Carousel auto-play
 
   useEffect(() => {
     if (!isPlaying) return;
@@ -64,8 +64,6 @@ export default function HackUNCP() {
 
   const next = () => setCurrentSlide(p => (p + 1) % photoSlides.length);
   const prev = () => setCurrentSlide(p => (p - 1 + photoSlides.length) % photoSlides.length);
-
-  /* ── render ──────────────────────────────────────────── */
 
   return (
     <section className="relative py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-black overflow-hidden">
@@ -77,7 +75,7 @@ export default function HackUNCP() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* ────────────── Section Header ────────────── */}
+        {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-6">
             <Rocket className="h-5 w-5 text-[#3E8B94]" />
@@ -108,9 +106,7 @@ export default function HackUNCP() {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════
-            HackUNCP 2026 — HAPPENING THIS MONTH
-           ══════════════════════════════════════════════ */}
+        {/* HackUNCP 2026 */}
         <div className="mb-28">
           <div className="flex items-center gap-3 mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#3E8B94]/40" />
@@ -192,9 +188,7 @@ export default function HackUNCP() {
           </div>
         </div>
 
-        {/* ══════════════════════════════════════════════
-            HackUNCP 2025 — RECAP
-           ══════════════════════════════════════════════ */}
+        {/* HackUNCP 2025 recap */}
         <div>
           <div className="flex items-center gap-3 mb-10">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-white/20" />

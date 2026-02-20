@@ -18,7 +18,7 @@ interface SemesterMembers {
 export default function Team() {
   const [showMembersModal, setShowMembersModal] = useState(false);
 
-  // Current leadership team with photos and LinkedIn
+  // Leadership team
   const leadership = {
     advisor: {
       name: "Mark Hunt",
