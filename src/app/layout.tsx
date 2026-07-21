@@ -1,54 +1,69 @@
-import React from "react";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 
-// Google Fonts setup
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const siteUrl = "https://aiuncp.github.io/";
+const title = "AI@UNCP";
+const description =
+  "AI@UNCP, a student-led organization at UNC Pembroke centered on hands-on learning, practical projects, and exploration in artificial intelligence.";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-// Metadata for SEO and favicon
 export const metadata: Metadata = {
-  title: "AI@UNCP – Artificial Intelligence at UNC Pembroke",
-  description:
-    "Artificial Intelligence @ UNCP is a student-led organization at the University of North Carolina at Pembroke focused on hands-on learning, real-world projects, and creative exploration in AI.",
-  metadataBase: new URL("https://aiuncp.github.io"),
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
-    icon: "https://aiuncp.github.io/favicon.png",
+    icon: "/aiuncp-logo.png",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: title,
+    title,
+    description,
+    images: [
+      {
+        url: "/aiuncp-logo.png",
+        width: 1080,
+        height: 1080,
+        alt: "AI@UNCP logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+    images: ["/aiuncp-logo.png"],
+  },
+  verification: {
+    google: "Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+const websiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: title,
+  url: siteUrl,
+  description,
+};
+
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        {/* Favicon */}
-        <link
-          rel="icon"
-          type="image/png"
-          href="https://aiuncp.github.io/favicon.png"
-        />
-        {/* Google Search Console Verification */}
-        <meta
-          name="google-site-verification"
-          content="Urk5X0IKPxzTGKlDZTJnMg-ZFG-3eHNP1rknY8QnfrU"
-        />
+        <link rel="canonical" href={siteUrl} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteData) }}
+        />
       </body>
     </html>
   );
