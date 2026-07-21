@@ -1,6 +1,6 @@
 # AI@UNCP
 
-Website for AI@UNCP and HackUNCP.
+Website for AI@UNCP.
 
 ## Development
 
