@@ -17,7 +17,3 @@ npm run typecheck
 npm run build
 npm audit
 ```
-
-## Deployment
-
-Pushes to `main` deploy to GitHub Pages through the repository workflow.
